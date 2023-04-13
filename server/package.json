@@ -1,14 +1,14 @@
 {
     "name": "JATE",
     "version": "1.0.0",
-    "description": "",
+    "description": "This is a simple text editor application that writes and saves code snippets.",
     "main": "server.js",
     "scripts": {
         "server": "nodemon server.js --ignore client"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "express": "^4.17.1"
     },
