@@ -12,46 +12,52 @@ const initdb = async () =>
     },
   });
 
-export const putDb = async (content) => {
-  console.log('PUT to the database');
+// TODO: Add logic to a method that accepts some content and adds it to the database
+export const putDb = async (content) => console.log('putDb not implemented');
 
-  // Connect to the db
-  const contactDb = await openDB('jate', 1);
+// TODO: Add logic for a method that gets all the content from the database
+export const getDb = async () => console.log('getDb not implemented');
 
-  // New transaction with specified privilages
-  const tx = contactDb.transaction('jate', 'readwrite');
+// export const putDb = async (content) => {
+//   console.log('PUT to the database');
 
-  // Open obj store
-  const store = tx.objectStore('jate');
+//   // Connect to the db
+//   const contactDb = await openDB('jate', 1);
 
-  // Add and store content
-  const request = store.add({ content: content });
+//   // New transaction with specified privilages
+//   const tx = contactDb.transaction('jate', 'readwrite');
 
-  // Confirm request
-  const result = await request;
-  console.log('Saved to DB.', result);
+//   // Open obj store
+//   const store = tx.objectStore('jate');
 
-};
+//   // Add and store content
+//   const request = store.add({ content: content });
 
-export const getDb = async () => {
-  console.log('GET from the database');
+//   // Confirm request
+//   const result = await request;
+//   console.log('Saved to DB.', result);
 
-  // Connect to the db
-  const contactDb = await openDB('jate', 1);
+// };
 
-  // New transaction with specified privilages
-  const tx = contactDb.transaction('jate', 'readonly');
+// export const getDb = async () => {
+//   console.log('GET from the database');
 
-  // Open obj store
-  const store = tx.objectStore('jate');
+//   // Connect to the db
+//   const contactDb = await openDB('jate', 1);
 
-  // Get all data in the db
-  const request = store.getAll();
+//   // New transaction with specified privilages
+//   const tx = contactDb.transaction('jate', 'readonly');
 
-  // Confirm request
-  const result = await request;
-  console.log('result.value', result);
-  return result;
-};
+//   // Open obj store
+//   const store = tx.objectStore('jate');
+
+//   // Get all data in the db
+//   const request = store.getAll();
+
+//   // Confirm request
+//   const result = await request;
+//   console.log('result.value', result);
+//   return result;
+// };
 
 initdb();

@@ -28,10 +28,10 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // Cache static assets
 registerRoute(
-  // callback to filter JS and CSS to cache 
-  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
-  // cache strategy, speficy storage name 
-  new CacheFirst ({
+// callback to filter JS, CSS, imgs to cache 
+({ request }) => ['style', 'script', 'worker', 'image'].includes(request.destination),
+// cache strategy, speficy storage name 
+new CacheFirst ({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
@@ -40,6 +40,7 @@ registerRoute(
     ],
   })
 );
+// why it limits the images to 2? 
 
 // Cache images
 // registerRoute(
