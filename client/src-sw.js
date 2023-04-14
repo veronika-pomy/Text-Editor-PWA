@@ -42,6 +42,7 @@ new CacheFirst ({
 );
 // why it limits the images to 2? 
 // need to cache manifest?
+// here is a new change to test
 
 // Cache images
 // registerRoute(
