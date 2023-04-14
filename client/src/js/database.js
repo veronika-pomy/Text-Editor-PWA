@@ -14,24 +14,30 @@ const initdb = async () =>
 
 // Accept input and add content to the database
 export const putDb = async (content) => {
-  
+  console.log('PUT to the database');
 
+  const jateDb = await openDB('jate', 1); // connect 
+  const tx = jateDb.transaction('jate', 'readwrite'); // new transaction and privileges to edit
+  const store = tx.objectStore('jate'); // obj to store
+  const request = store.put({ id: 1, value: content }); // put data
+  const result = await request;
+
+  console.log('Data saved.', result); // confirm result
 };
 
 // Get all the content from the database
 export const getDb = async () => {
+  console.log('GET from the database');
 
-  console.log('GET from database');
-
-  const jateDb = await openDB('jate', 1); // connect 
-  const tx = jateDb.transaction('jate', 'readonly'); // new transaction and privileges
-  const store = tx.objectStore('jate'); // obj to store
+  const jateDb = await openDB('jate', 1); 
+  const tx = jateDb.transaction('jate', 'readonly'); // speficy privileges
+  const store = tx.objectStore('jate'); 
   const request = store.getAll(); // get all data
-  const result = await request; // await req
+  const result = await request; 
   
-  console.log('result.value', result); // confirm 
+  console.log('result.value', result); // confirm result
 
-  return result; 
+  return result.value; // return only string 
 };
 
 initdb();
