@@ -41,21 +41,24 @@ new CacheFirst ({
   })
 );
 
+// why 2 imgs ?
+// need to cache manifest?
+// favicon.ico ? 
+// assets load on second refresh not on first
+
+// Cache images
 // registerRoute(
-//   /\.(?:png|jpg|jpeg|svg|gif|ico|mp4)$/,
-//   // Use the cache if it's available.
+//   ({ request }) => request.destination === 'image',
 //   new CacheFirst({
-//     cacheName: "image-cache",
+//     cacheName: 'image-cache',
 //     plugins: [
+//       new CacheableResponsePlugin({
+//         statuses: [0, 200],
+//       }),
 //       new ExpirationPlugin({
-//         maxEntries: 3, // 3 imgs
-//         maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days
+//         maxEntries: 2, // chace max two images
+//         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
 //       }),
 //     ],
 //   })
-// )
-
-// https://github.com/GoogleChrome/workbox/issues/2749
-// why 2 imgs
-// need to cache manifest?
-// favicon.ico ? 
+// );
