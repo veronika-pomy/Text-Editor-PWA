@@ -28,8 +28,8 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // Cache static assets
 registerRoute(
-// callback to filter JS, CSS, imgs to cache 
-({ request }) => ['style', 'script', 'worker', 'image'].includes(request.destination),
+// callback to filter JS, CSS, imgs, manifest to cache 
+({ request }) => ['style', 'script', 'worker', 'image', 'manifest'].includes(request.destination),
 // cache strategy, speficy storage name 
 new CacheFirst ({
     cacheName: 'asset-cache',
@@ -41,6 +41,7 @@ new CacheFirst ({
   })
 );
 // why it limits the images to 2? 
+// need to cache manifest?
 
 // Cache images
 // registerRoute(
