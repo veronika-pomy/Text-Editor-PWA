@@ -7,3 +7,5 @@ https://developer.chrome.com/docs/workbox/caching-strategies-overview/#:~:text=%
 https://developer.chrome.com/docs/workbox/modules/workbox-routing/
 
 https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put
+
+https://stackoverflow.com/questions/45463181/should-i-cache-manifest-json-in-service-worker

@@ -28,7 +28,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // Cache static assets
 registerRoute(
-// callback to filter JS, CSS, imgs, manifest to cache 
+// callback to filter JS, CSS, imgs, manifest
 ({ request }) => ['style', 'script', 'worker', 'image', 'manifest'].includes(request.destination),
 // cache strategy, speficy storage name 
 new CacheFirst ({
@@ -40,23 +40,22 @@ new CacheFirst ({
     ],
   })
 );
-// why it limits the images to 2? 
-// need to cache manifest?
-// here is a new change to test
 
-// Cache images
 // registerRoute(
-//   ({ request }) => request.destination === 'image',
+//   /\.(?:png|jpg|jpeg|svg|gif|ico|mp4)$/,
+//   // Use the cache if it's available.
 //   new CacheFirst({
-//     cacheName: 'image-cache',
+//     cacheName: "image-cache",
 //     plugins: [
-//       new CacheableResponsePlugin({
-//         statuses: [0, 200],
-//       }),
 //       new ExpirationPlugin({
-//         maxEntries: 2, // chace max two images
-//         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+//         maxEntries: 3, // 3 imgs
+//         maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days
 //       }),
 //     ],
 //   })
-// );
+// )
+
+// https://github.com/GoogleChrome/workbox/issues/2749
+// why 2 imgs
+// need to cache manifest?
+// favicon.ico ? 
