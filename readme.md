@@ -2,7 +2,7 @@
 
 ## Description
 
-This PWA text editor is designed for users who need a way to save text or code snippets in an app running in a browser window or on a desktop. The app is bundled using Webpack and deployed on Heroku.
+This PWA text editor is designed for users who need a way to save text or code snippets in an app running in a browser window or on a desktop. The app functions with or without an internet connection. It's bundled using Webpack and deployed on Heroku.
 
 ---
 

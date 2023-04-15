@@ -41,6 +41,8 @@ new CacheFirst ({
   })
 );
 
+// Required: static assets pre cached upon loading along with subsequent pages and static assets
+
 // why 2 imgs ?
 // need to cache manifest?
 // favicon.ico ? 
