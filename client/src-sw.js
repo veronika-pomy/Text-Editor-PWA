@@ -1,5 +1,5 @@
 const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
-const { CacheFirst } = require('workbox-strategies');
+const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
@@ -28,10 +28,10 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // Cache static assets
 registerRoute(
-// callback to filter JS, CSS, imgs, manifest
-({ request }) => ['style', 'script', 'worker', 'image', 'manifest'].includes(request.destination),
+// callback to filter JS, CSS
+({ request }) => ['style', 'script', 'worker'].includes(request.destination),
 // cache strategy, speficy storage name 
-new CacheFirst ({
+new StaleWhileRevalidate ({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
@@ -40,27 +40,3 @@ new CacheFirst ({
     ],
   })
 );
-
-// Required: static assets pre cached upon loading along with subsequent pages and static assets
-
-// why 2 imgs ?
-// need to cache manifest?
-// favicon.ico ? 
-// assets load on second refresh not on first
-
-// Cache images
-// registerRoute(
-//   ({ request }) => request.destination === 'image',
-//   new CacheFirst({
-//     cacheName: 'image-cache',
-//     plugins: [
-//       new CacheableResponsePlugin({
-//         statuses: [0, 200],
-//       }),
-//       new ExpirationPlugin({
-//         maxEntries: 2, // chace max two images
-//         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-//       }),
-//     ],
-//   })
-// );
