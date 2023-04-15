@@ -60,7 +60,7 @@ THEN the static assets are pre-cached upon loading along with subsequent pages a
 
 ## Demo
 
-You can check out the app following [this link.]()
+You can check out the app following [this link.](https://text-editor-jate-pwa-2023.herokuapp.com/)
 
 This screenshot demonstrates the desktop app.
 
